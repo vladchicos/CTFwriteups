@@ -21,7 +21,9 @@ Now you can talk to the mirror.
 
 ```
 
+
 The second one is the address of IO_printf
+
 ![io_printf](writeupfiles/io_printf.png)
 
 Now we can identify the libc version using [libc database search](https://libc.nullbyte.cat) and we can calculate our offsets
