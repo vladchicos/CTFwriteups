@@ -22,7 +22,10 @@ Now you can talk to the mirror.
 ```
 
 The second one is the address of IO_printf
+![io_printf](writeupfiles/io_printf.png)
+
 Now we can identify the libc version using [libc database search](https://libc.nullbyte.cat) and we can calculate our offsets
+
 On my computer is 2.30 on the server it was 2.27.
 
 In order to get a shell I will use one_gadget
@@ -63,7 +66,10 @@ constraints:
   [[rax]] == NULL || [rax] == NULL
 
 ```
-Sadly, by default the binary does not meet the conditions of any gadget. But, I will adjust the registers using a ROPchain. I will search for gadgets in the libc because I already have the IO_printf address.
+Sadly, by default the binary does not meet the conditions of any gadget.
+But, I will adjust the registers using a ROPchain.
+I will search for gadgets in the libc because I already have the IO_printf address.
+
 The ropchain is as following :
 ```
 mov RDX, RAX % RAX is already null
@@ -79,3 +85,5 @@ objdump -D -Mintel libc6_2.27-3ubuntu1.3_amd64.so
 ```
 
 Now I can use the 0xe5622 gadget and spawn a shell
+
+![flag](writeupfiles/proof.png)
