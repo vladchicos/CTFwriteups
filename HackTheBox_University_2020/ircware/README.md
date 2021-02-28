@@ -60,7 +60,7 @@ the user is "Accepted" and the flag can be requested.
 if( A<= letter <=Z )
 {
 	letter += 17
-	if(letter <= 90)
+	if(letter > 90)
 	{
 		letter = letter + 64 - 90
 	}
