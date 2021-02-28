@@ -1,7 +1,7 @@
-## ircware - reversing$
+## ircware - reversing
 The program tries to create a socket and to connect to a listener in order to communicate with it and act like a "pseudoterminal".
 
-![socket](writeupfiles/socket)
+![socket](writeupfiles/socket.png)
 
 According to the x64 calling convention the first syscall looks like this :
 ```
@@ -47,7 +47,7 @@ In the strings tab I found these interesting commands:
 ![strings](writeupfiles/strings.png)
 
 
-![password encoding](writeupfiles/pass_algo.png)
+![password encoding](writeupfiles/pass_check.png)
 
 
 In this part it is checked if the user types an available command. After that,
@@ -68,6 +68,8 @@ if( A<= letter <=Z )
 
 }
 ```
+
+![password encoding](writeupfiles/pass_algo.png)
 
 The required form is obtained by inputting the string "ASS3MBLY"
 
