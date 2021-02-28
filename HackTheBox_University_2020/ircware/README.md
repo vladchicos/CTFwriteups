@@ -35,7 +35,6 @@ nc -l 8000
 
 
 I find it easier if during debugging(I used IDA) I just flip a control register to bypass a conditional instruction(which checks if the connection was successfully established) and change the file descriptor to 0(stdin)
-
 (this is the way i solved the challenge during the ctf)
 
 
