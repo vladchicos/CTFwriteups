@@ -10,7 +10,7 @@ PIE:      PIE enabled
 ```
 The addresses are randomized
 
-"Talking" to the mirror gives us a memory leak
+"Talking" to the mirror gives me a memory leak
 ```
 Do you want to talk to the mirror? (y/n)
 > y
@@ -21,8 +21,11 @@ Now you can talk to the mirror.
 
 ```
 
+The first address points to the top of the stack and the second one to IO_printf function.
 
-The second one is the address of IO_printf
+![overflow](writeupfiles/segfault.png)
+
+I triggered a buffer overflow. The instruction pointer can be controlled.
 
 ![io_printf](writeupfiles/io_printf.png)
 
@@ -85,6 +88,9 @@ objdump -D -Mintel libc6_2.27-3ubuntu1.3_amd64.so
 34da3 : pop rcx ; ret
 
 ```
+The next problem is that I only have control on the last byte of the return pointer. The solution is to modify the byte in such a way that the return pointer will be a bit higher on the stack, right at the beginning of my injected payload.
+
+*NOTE : My solution is not 100% robust, sometimes the top and the bottom of the stack frame belong to different address spaces(the upper bytes differ too)*
 
 Now I can use the 0xe5622 gadget and spawn a shell
 
